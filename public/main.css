@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Impact;
+    src: url(impact.ttf);
+}
+
+.block{
+    font-family: 'Do Hyeon', sans-serif;
+    width: 790px;
+    height: 90px;
+    position: absolute;
+    bottom: 10px;
+    display: none;
+    background-image: url("bandeau_lol.png");
+    margin: 0 0 0 20px;
+    padding: 0 0 0 10px;
+    color: #fff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+h1, h3{
+    margin: 0;
+    padding: 0;
+}
+.block #subtitle{
+    margin: 15px 0 0 0;
+    font-size: 25px;
+}
+
+.block span{
+    position: absolute;
+    top:10px;
+    right: 30px;
+    font-size: 20px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="animation.css" />
+
+</head>
+<body>
+    <div class="block">
+        <h1 id="title"></h1>
+        <h3 id="subtitle"></h3>
+        <span id="date"></span>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="custom.js"></script>
+    <script>
+        var block = $(".block");
+        block.addClass("animated");
+        var socket = io('http://localhost');
+        socket.on('new', function (data) {
+            block.show();
+            console.log(data);
+            $("#title").html(data.title);
+            $("#subtitle").html(data.subtitle);
+            $("#date").html(data.date);
+            block.animateCss('fadeInLeft', () => {
+                setTimeout(() => {
+                    block.animateCss('fadeOutLeft', () => {
+                        block.hide();
+                    });
+                }, 2000);
+            })
+        });
+
+        /*var anim = function(data){
+            $("#title").html(data.title);
+            $("#subtitle").html(data.subtitle);
+            $("#date").html(data.date);
+            block.addClass("fadeInLeft");
+            setTimeout(()=> {
+                block.removeClass("fadeInLeft");
+                block.addClass("fadeOutLeft");
+            }, 3000);
+        }*/
+    </script>
+</body>
+</html>
